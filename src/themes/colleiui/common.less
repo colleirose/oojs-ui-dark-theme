@@ -1,0 +1,310 @@
+// WikimediaUI theme variables
+
+@ooui-default-image-path: 'themes/wikimediaui/images';
+@ooui-font-size-browser: 16; // assumed browser default of `16px`
+@ooui-font-size-base: ( 0.875 / 1em ); // equals `14px` at browser default of `16px`
+@ooui-unit: em;
+
+// Pull in the main set of Codex design tokens.
+// * Reaching into node_modules like this to avoid a symlink that Windows users won't like
+// * Use Less "reference" import to avoid including the '/**' comment at the top of the file
+// See https://doc.wikimedia.org/codex/latest/design-tokens/overview.html
+@import ( reference ) '../../../node_modules/@wikimedia/codex-design-tokens/theme-wikimedia-ui-legacy.less';
+
+// Background & Text Colors
+@background-color-base--read-only: #f8f9fa;
+@background-color-tool--active-hover: rgba( 41, 98, 204, 0.1 );
+
+// Disabled Widgets
+@opacity-tool--disabled: 0.34; // equals `#a9a9a9` on background-color `#fff`
+
+// Box Sizes
+// `@*size` variables in scale are used for `*width` & `*height` properties.
+// `@min-size-interactive-pointer` is defined as `px` carrying value in WikimediaUI Base variables and
+// gets preference over `@size-200` to prevent recursion.
+
+// FIXME: Note, that Codex token value is `16px`.
+@min-size-icon-small: 14px;
+// `min-size/-width/-height` values are defined in `px`, see T130691.
+@min-size-button-tagitem-remove: 20px;
+@min-size-toolbar-popup-toolgroup-handle: 140px;
+@min-size-toolbar-narrow-popup-toolgroup-handle: 100px;
+@min-width-button-base: 44px;
+@min-width-button-combo-widget: 37px;
+
+@size-anchor: 9px;
+@size-button-tagitem-remove: ( 20 / @ooui-font-size-browser / @ooui-font-size-base ); // equals `1.5625em`≈`20px`
+// `@min-size-icon-medium` is defined as `px` carrying value in WikimediaUI Base variables and
+// gets preference over `@size-icon-medium` to prevent recursion.
+// Note, in Codex `@size-icon-small` is `16px` equivalent.
+@size-icon-small: ( 14 / @ooui-font-size-browser / @ooui-font-size-base );
+@size-dialog-bar--desktop: ( 42 / @ooui-font-size-browser / @ooui-font-size-base ); // equals `3em`≈`40px`
+@size-dialog-bar--mobile: ( 44 / @ooui-font-size-browser / @ooui-font-size-base ); // equals `3.4375em`≈`44px`
+@size-dialog-message-bar: ( 40 / @ooui-font-size-browser / @ooui-font-size-base );
+@size-tool: ( 42 / @ooui-font-size-browser / @ooui-font-size-base );
+
+@size-tag-group-modifier: -( 2 / @ooui-font-size-browser / @ooui-font-size-base );
+@size-toolbar-narrow-modifier: ( 2 / @ooui-font-size-browser / @ooui-font-size-base );
+@size-modifier-border: ( 1 / @ooui-font-size-browser / @ooui-font-size-base ); // Use for size calculations with borders aside of `px` based `@border-width-base`
+
+@width-button-combo-widget: ( 37 / @ooui-font-size-browser / @ooui-font-size-base ); // equals `2.42857143em`≈`34px`;
+
+@height-icon-element: 100%;
+@height-button-input-inner: ( 28 / @ooui-font-size-browser / @ooui-font-size-base );
+@height-progressbar-bar: ( 14 / @ooui-font-size-browser / @ooui-font-size-base );
+@height-search: ( 56 / @ooui-font-size-browser / @ooui-font-size-base ); // equals `4.375em`≈`56px`; `height: 32px` + 2 * `margin: 12px`
+@height-tagitem: ( 22 / @ooui-font-size-browser / @ooui-font-size-base ); // equals `1.71875em`≈`22px`;
+@height-tabselect: ( 37 / @ooui-font-size-browser / @ooui-font-size-base );
+
+@max-width-base: 50em;
+@max-width-input: @max-width-base;
+
+@start-framed-icon-only: ( 11 / @ooui-font-size-browser / @ooui-font-size-base ); // equals `0.859375em`≈`11px`; HACK: We have to break with `@padding-start-input-text-icon` to perfectly center in `@min-width-button-base`
+@start-framed-indicator-only: ( 15 / @ooui-font-size-browser / @ooui-font-size-base ); // equals `1.07142857em`≈`15px`; `@size-icon-x-small + 2 * @border-width-base`
+@start-framed-indicator-only-button-combo-widget: ( 12 / @ooui-font-size-browser / @ooui-font-size-base ); // equals `0.85714286em`≈`12px`
+@start-frameless: -( 6 / @ooui-font-size-browser / @ooui-font-size-base ); // `-( @start-frameless-icon + @border-width-base )`
+@start-frameless-icon: ( 5 / @ooui-font-size-browser / @ooui-font-size-base );
+@start-fieldlayout-help-icon: ( 3 / @ooui-font-size-browser / @ooui-font-size-base ); // equals `0.234375em`≈`3px`
+@start-tagmultiselect-input: ( 8 / @ooui-font-size-browser / @ooui-font-size-base ); // Same as `@padding-horizontal-tagitem`.
+@start-tool-icon: ( 11 / @ooui-font-size-browser / @ooui-font-size-base );
+@start-toolbar-narrow-tool-icon: ( 4 / @ooui-font-size-browser / @ooui-font-size-base );
+@end-tool-indicator: ( 8 / @ooui-font-size-browser / @ooui-font-size-base );
+
+@margin-dialog-bar-button-framed: 6px;
+@margin-search: 12px;
+@margin-taboption: @margin-dialog-bar-button-framed;
+@margin-tagitem: 4px;
+@margin-button-close: 4px;
+@margin-top-form-fieldset: 24px;
+@margin-top-fieldlayout: 16px;
+@margin-top-fieldlayout--labelled: 12px;
+@margin-top-fieldlayout-help: -6px;
+@margin-top-message: 8px;
+@margin-bottom-fieldset-header: 8px;
+@margin-bottom-horizontallayout-widget: 8px;
+@margin-vertical-popup: 9px;
+@margin-horizontal-fieldlayout-message: 12px;
+@margin-end-actionlayout-input: 8px;
+@margin-end-fieldlayout-help: -8px;
+@margin-end-widget: 8px;
+
+@border-toolgroup: @border-width-base @border-style-base #eaecf0;
+
+@border-radius-frameless-indicator: 1px; // Together with `@box-shadow-frameless-indicator--focus` it results in well rounded border
+
+// Note, Codex features a spacing scale with `@spacing-100` equal `16px`.
+@padding-base: @padding-vertical-base @padding-horizontal-base;
+@padding-frameless: @padding-vertical-base @padding-horizontal-frameless;
+@padding-input-text: @padding-vertical-base @padding-horizontal-input-text;
+@padding-menu: ( @padding-vertical-base + @border-width-base ) @padding-horizontal-base;
+@padding-menu-large: @padding-vertical-tool-label @padding-horizontal-base;
+@padding-panel-form: @spacing-75 @spacing-100 @spacing-100;
+@padding-panel-form-search-query: 0 @spacing-100;
+@padding-panel-dialog: @spacing-125;
+@padding-horizontal-base: @spacing-75;
+@padding-horizontal-input-text: @spacing-50;
+@padding-horizontal-frameless: @spacing-35;
+@padding-horizontal-message-block: @spacing-150;
+@padding-horizontal-taboption: @spacing-50;
+@padding-horizontal-taboption-label: 5px;
+@padding-horizontal-tagitem: @spacing-50;
+@padding-horizontal-toolbar-action-buttons: @spacing-100; // Aligned relatively to `@padding-horizontal-base` but for toolbar button height.
+// All paddings holding icons need `em`s due to font-size derived icon scaling.
+@padding-horizontal-base-iconized: ( unit( @spacing-75 ) / @ooui-font-size-browser / @ooui-font-size-base );
+// Must be < `8` as it cuts off scripts like Burmese. Directly connected to `line-height` further down.
+// FIXME: Note, that Codex token value is `4px`.
+@padding-vertical-base: 5px;
+// Menu items don't have a border. So add it to padding.
+@padding-vertical-menu: @padding-vertical-base + @border-width-base;
+@padding-vertical-label: @spacing-25;
+@padding-vertical-message-block: @spacing-100;
+@padding-top-icon-indicator: ( 30 / @ooui-font-size-browser / @ooui-font-size-base );
+@padding-top-tool: ( 42 / @ooui-font-size-browser / @ooui-font-size-base );
+// Dialog actions feature borders.
+@padding-vertical-dialog-action: 10px;
+// Tools don't feature borders.
+@padding-vertical-tool-label: 11px;
+@padding-start-icon: @size-icon-medium;
+// All paddings holding icons/indicators need `em`s due to font-size derived icon scaling.
+@padding-start-icon-only: ( 30 / @ooui-font-size-browser / @ooui-font-size-base ); // @min-width-button-base - @padding-horizontal-base - 2 * @border-width-base.
+@padding-start-fieldset-header-iconized: unit( ( 26 / @ooui-font-size-browser / ( @ooui-font-size-base * @font-size-fieldset-header ) ), @ooui-unit );
+@padding-start-messages: ( unit( @spacing-50 ) / @ooui-font-size-browser / @ooui-font-size-base );
+// Indicator receives a little less than `@padding-horizontal-base` to make up for its fragility.
+// Also abusing `@padding-start` as `start` value.
+@padding-start-indicator: ( 10 / @ooui-font-size-browser / @ooui-font-size-base );
+@padding-start-indicator-only: @size-icon-x-small * 2;
+@padding-start-indicator-plus: ( 30 / @ooui-font-size-browser / @ooui-font-size-base );
+@padding-start-frameless-icon-plus: @padding-start-icon-only;
+// `6px` is not aligned to Design Style Guide, as checkbox and radio sizes aren't either.
+@padding-start-fieldlayout-label: @spacing-35;
+@padding-start-input-text-icon-label: ( 34 / @ooui-font-size-browser / @ooui-font-size-base );
+@padding-start-button-framed-icon-label: ( 38 / @ooui-font-size-browser / @ooui-font-size-base );
+@padding-start-menu-icon-label: ( 37 / @ooui-font-size-browser / @ooui-font-size-base );
+@padding-start-tool: ( 37 / @ooui-font-size-browser / @ooui-font-size-base );
+@padding-start-tool-icon-only: ( 42 / @ooui-font-size-browser / @ooui-font-size-base ); // Provide slightly more space than `@padding-start-input-text-icon-label` as we want to provide minimal touch action size
+@padding-end-dropdown: @padding-start-indicator-plus;
+@padding-end-tagitem-remove: 23px;
+@padding-end-toolgroup-label-indicator: ( 26 / @ooui-font-size-browser / @ooui-font-size-base );
+@padding-end-toolgroup-indicator: ( unit( @spacing-100 ) / @ooui-font-size-browser / @ooui-font-size-base );
+
+@box-shadow-toolbar-bottom: 0 -1px 1px 0 rgba( 0, 0, 0, 0.2 );
+@box-shadow-frameless-indicator--focus: 0 0 0 2px @box-shadow-color-progressive--focus;
+
+@filter-drop-shadow-menu: drop-shadow( 0 2px 1px rgba( 0, 0, 0, 0.3 ) );
+
+// `font-size` has to be in `em` to enable user override in browser settings for accessibility.
+@font-size-small: ( 13 / @ooui-font-size-browser / @ooui-font-size-base );
+@font-size-fieldset-header: ( 16 / @ooui-font-size-browser / @ooui-font-size-base );
+// ProcessDialog title, need to be set in `em` as we alternate between mobile/desktop.
+@font-size-dialog-process-title: 1.1em;
+
+// `line-height` has to be relative/in `em` to enable user override in browser settings.
+@line-height-reset: 1; // Support: Safari, reset `line-height` in order to normalize it in a follow-up rule across browsers.
+@line-height-label: ( 20 / @ooui-font-size-browser / @ooui-font-size-base ); // Equals `1.42857143em`≈`@spacing-12520px` at base `font-size: 14px;
+@line-height-tagitem-label: unit( ( 21 / @ooui-font-size-browser / @ooui-font-size-base / @font-size-small ), @ooui-unit ); // Push label down by 1 px for vertical centering.
+
+// Text Shadows
+@text-shadow-base: 0 1px 1px @color-inverted; // 'coined' effect
+@text-shadow-base--disabled: @text-shadow-base;
+
+// Binary Input Widgets (CheckboxInput, RadioInput, ToggleSwitch)
+// Positioning Model
+// Use `px` unit to prevent pixel rounding error when using `@size-input-binary / 4`.
+// Works with different sizes on mobile and desktop as it negatively offsets from outside.
+@position-offset-input-radio-focus: -4px;
+@size-input-binary: ( 20 / @ooui-font-size-browser / @ooui-font-size-base );
+@start-input-binary-icon: ( 3 / @ooui-font-size-browser / @ooui-font-size-base );
+@border-width-radio--checked: 6px;
+
+// Dialogs
+@size-dialog-menu: ( 200 / @ooui-font-size-browser / @ooui-font-size-base );
+
+// Theme mixins
+
+.mw-frameless-button-colored( @child, @color-text, @hover, @active, @focus ) { // following CSS Pseudo Classes
+	> @{child} {
+		color: @color-text;
+	}
+
+	> @{child}:hover {
+		color: @hover;
+	}
+
+	> @{child}:active,
+	&.oo-ui-buttonElement-pressed > @{child} {
+		color: @active;
+		border-color: @active;
+		box-shadow: none;
+	}
+}
+
+.mw-framed-button-colored( @child, @color-text, @hover, @border-color--hover, @active, @focus ) {
+	> @{child} {
+		color: @color-text;
+	}
+
+	> @{child}:hover {
+		background-color: @hover;
+		border-color: @border-color--hover;
+	}
+
+	> @{child}:focus {
+		border-color: @focus;
+		box-shadow: inset 0 0 0 1px @focus;
+		// In Windows high contrast mode the outline becomes visible.
+		outline: @outline-base--focus;
+	}
+
+	> @{child}:active,
+	&.oo-ui-buttonElement-pressed > @{child},
+	&.oo-ui-buttonElement-active > @{child},
+	&.oo-ui-popupToolGroup-active > @{child} {
+		background-color: lighten( @active, 60% );
+		color: @active;
+		border-color: @active;
+		box-shadow: none;
+	}
+}
+
+.mw-framed-primary-button-colored( @child, @color, @hover, @active, @focus ) {
+	> @{child} {
+		color: @color-inverted;
+		background-color: @color;
+		border-color: @color;
+	}
+
+	> @{child}:hover {
+		background-color: @hover;
+		border-color: @hover;
+	}
+
+	> @{child}:focus {
+		border-color: @focus;
+		box-shadow: @box-shadow-inset-small @focus, @box-shadow-inset-medium @color-inverted;
+		// In Windows high contrast mode the outline becomes visible.
+		outline: @outline-base--focus;
+	}
+
+	> @{child}:active,
+	&.oo-ui-buttonElement-pressed > @{child},
+	&.oo-ui-buttonElement-active > @{child},
+	&.oo-ui-popupToolGroup-active > @{child} {
+		color: @color-inverted;
+		background-color: @active;
+		border-color: @active;
+		box-shadow: none;
+	}
+}
+
+// For some reason the ':' in the arguments list makes the linter think this a rule.
+.mw-tool-colored( @child, @color-text, @hover, @active, @focus, @active-text: @active ) {
+	> @{child} {
+		color: @color-text;
+	}
+
+	> @{child}:hover {
+		background-color: @hover;
+	}
+
+	> @{child}:focus {
+		outline: @border-width-base @border-style-base @focus;
+		box-shadow: inset 0 0 0 1px @focus;
+	}
+
+	> @{child}:active,
+	&.oo-ui-tool-active > @{child},
+	&.oo-ui-popupToolGroup-active > @{child} {
+		background-color: lighten( @active, 60% );
+		color: @active-text;
+		box-shadow: none;
+	}
+}
+
+.mw-primary-tool-colored( @child, @color, @hover, @active, @focus ) {
+	> @{child} {
+		color: @color-inverted;
+		background-color: @color;
+	}
+
+	> @{child}:hover {
+		background-color: @hover;
+	}
+
+	> @{child}:focus {
+		outline: @border-width-base @border-style-base @focus;
+		box-shadow: inset 0 0 0 1px @focus, inset 0 0 0 2px @color-inverted;
+	}
+
+	> @{child}:active,
+	&.oo-ui-tool-active > @{child} {
+		color: @color-inverted;
+		background-color: @active;
+		box-shadow: none;
+	}
+
+	&.oo-ui-widget-disabled > @{child},
+	&.oo-ui-widget-disabled > @{child}:active {
+		background-color: @background-color-disabled;
+		color: @color-inverted;
+	}
+}
